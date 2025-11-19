@@ -51,8 +51,9 @@ if st.button("어울리는 노래 찾기"):
             )
             
             # 결과 출력
-    image_url = response.data[0].url
-    result = chat_completion.choices[0].message.content
+     image_url = response.data[0].url
+     result = chat_completion.choices[0].message.content
             
-    st.image(image_url, caption=feeling)
-    st.write(result)
+     st.image(image_url, caption=feeling)
+     st.write(result)
+
