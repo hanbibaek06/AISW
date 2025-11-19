@@ -43,7 +43,7 @@ if st.button("어울리는 노래 찾기"):
     )
     response = client.images.generate(
         model="dall-e-3",
-        prompt=song
+        prompt=song,
         size="1024x1024",
         quality="standard",
         n=1,
@@ -52,5 +52,6 @@ if st.button("어울리는 노래 찾기"):
     
     result = chat_completion.choices[0].message.content
     st.write(result)
+
 
 
