@@ -14,7 +14,7 @@ song = st.text_input("오늘 당신의 기분은 어떠한가요?")
 
 if song:
     feeling = st.select_slider(
-    "그 기분의 정도를 알려주세요!(아주 조금~, 조금~, 적당히~, 조금 많이~, 매우~)",
+    "그 기분의 정도를 알려주세요! (아주 조금~, 조금~, 적당히~, 조금 많이~, 매우~)",
     options=[
         f"아주 조금 {song}",
         f"조금 {song}",
@@ -56,6 +56,7 @@ if st.button("어울리는 노래 찾기"):
             
      st.image(image_url, caption=feeling)
      st.write(result)
+
 
 
 
