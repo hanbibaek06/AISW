@@ -16,10 +16,10 @@ song = st.text_input("오늘 당신의 기분은 어떠한가요?")
 feeling = st.selset_slider(
     "그 기분의 정도를 알려주세요!",
     option=[
-        "아주 조금 print("song")함",
-        "조금 print("song")함",
-        "적당히 print("song")함",
-        "매우 print("song")함"
+        "아주 조금 {song}함",
+        "조금 {song}함",
+        "적당히 {song}함",
+        "매우 {song}함"
     ],
 )
 st.write("나의 기분의 정도는", felling)
@@ -52,4 +52,5 @@ if st.button("어울리는 노래 찾기"):
     
     result = chat_completion.choices[0].message.content
     st.write(result)
+
 
