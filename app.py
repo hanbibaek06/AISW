@@ -10,10 +10,10 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
 # 앱 제목
 st.title("오늘의 노래를 들어봐요🎧🎶")
 
-# 재료 입력 받기
 song = st.text_input("오늘 당신의 기분은 어떠한가요?")
 
-feeling = st.select_slider(
+if song:
+    feeling = st.select_slider(
     "그 기분의 정도를 알려주세요!",
     options=[
         f"아주 조금 {song}",
@@ -24,32 +24,35 @@ feeling = st.select_slider(
     ],
 )
 st.write("지금 내 기분의 정도는", feeling)
-        
-        
 
-# 재료 출력
+        
 if st.button("어울리는 노래 찾기"):
+     user_prompt = f"나의 기분은 '{song}'이고, 그 정도는 '{feeling}'이야. 이 감정 상태에 딱 어울리는 노래 5곡을 추천해주고, 유튜브 링크도 함께 줘."
     chat_completion = client.chat.completions.create(
+        model ="gpt-4o",
         messages=[
             {
-                "role": "user",
-                "content": song,
+                "role": "system",
+                "content": "당신은 음악 추천 전문가입니다. 사용자의 기분과 그 강도에 맞춰 상세하게 노래를 추천해주세요."
             },
             {
-                "role": "system",
-                "content": "위에서 입력받은 기분과 그 기분의 정도에 어울리는 노래를 5개 찾아주고, 해당 뮤직비디오나 노래영상을 각각 하나씩 나타내줘"
-            }
+                "role": "user",
+                "content": user_prompt,
+            },
         ],
-        model ="gpt-4o",
     )
+
     response = client.images.generate(
-        model="dall-e-3",
-        prompt=song,
-        size="1024x1024",
-        quality="standard",
-        n=1,
-    )
-    
-    
-    result = chat_completion.choices[0].message.content
-    st.write(result)
+                model="dall-e-3",
+                prompt=f"{feeling}한 기분을 표현하는 추상적인 앨범 커버 아트", # 프롬프트 구체화
+                size="1024x1024",
+                quality="standard",
+                n=1,
+            )
+            
+            # 결과 출력
+            image_url = response.data[0].url
+            result = chat_completion.choices[0].message.content
+            
+            st.image(image_url, caption=feeling)
+            st.write(result)
