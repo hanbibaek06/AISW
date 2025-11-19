@@ -11,6 +11,7 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
 st.title("오늘의 노래를 들어봐요🎧🎶")
 
 # 재료 입력 받기
+age= = st.text_input("당신의 나이는?")
 song = st.text_input("오늘 당신의 기분은 어떠한가요?")
 
 # 재료 출력
@@ -19,7 +20,7 @@ if st.button("어울리는 노래 찾기"):
         messages=[
             {
                 "role": "user",
-                "content": song,
+                "content": age,song,
             },
             {
                 "role": "system",
@@ -30,7 +31,7 @@ if st.button("어울리는 노래 찾기"):
     )
     response = client.images.generate(
         model="dall-e-3",
-        prompt=song,
+        prompt=age,song
         size="1024x1024",
         quality="standard",
         n=1,
@@ -39,7 +40,3 @@ if st.button("어울리는 노래 찾기"):
     
     result = chat_completion.choices[0].message.content
     st.write(result)
-
-
-
-
