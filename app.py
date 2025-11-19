@@ -18,7 +18,8 @@ feeling = st.select_slider(
     options=[
         f"아주 조금 {song}",
         f"조금 {song}",
-        f"조금 많이 {song}",
+        f"적당히 {song}",
+        f"조금 많이 {song}"
         f"매우 {song}"
     ],
 )
@@ -36,7 +37,7 @@ if st.button("어울리는 노래 찾기"):
             },
             {
                 "role": "system",
-                "content": "위에서 입력받은 기분에 어울리는 노래를 5개 찾아주고, 해당 뮤직비디오나 노래영상을 각각 하나씩 나타내줘"
+                "content": "위에서 입력받은 기분과 그 기분의 정도에 어울리는 노래를 5개 찾아주고, 해당 뮤직비디오나 노래영상을 각각 하나씩 나타내줘"
             }
         ],
         model ="gpt-4o",
@@ -52,9 +53,3 @@ if st.button("어울리는 노래 찾기"):
     
     result = chat_completion.choices[0].message.content
     st.write(result)
-
-
-
-
-
-
