@@ -26,7 +26,8 @@ if st.button("레시피 생성하기"):
                 "content": "입력받은 재료로 할 수 있는 맛있는 요리 레시피를 알려줘" 
             }
         ],
-        modle ="gpt-4o",
+        model ="gpt-4o",
     )
     result = chat_completion.choices[0].message.content
+
     st.write(result)
