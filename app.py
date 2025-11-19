@@ -8,7 +8,7 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
 
 
 # 앱 제목
-st.title("기분에 맞는 노래를 들어봐요🎧🎶")
+st.title("오늘의 노래를 들어봐요🎧🎶")
 
 # 재료 입력 받기
 song = st.text_input("오늘 당신의 기분은 어떠한가요?")
@@ -35,7 +35,10 @@ if st.button("어울리는 노래 찾기"):
         quality="standard",
         n=1,
     )
-    
+
+    result = chat_completion.choices[0].message.content
+    st.write(result)
+
     # 재료 입력 받기
 number = st.text_input("듣고 싶은 노래의 번호를 적어주세요.")
 
@@ -65,4 +68,5 @@ if st.button("확인"):
     
     result = chat_completion.choices[0].message.content
     st.write(result)
+
 
