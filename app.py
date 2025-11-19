@@ -42,7 +42,7 @@ if st.button("어울리는 노래 찾기"):
         ],
     )
 
-    response = client.images.generate(
+     response = client.images.generate(
                 model="dall-e-3",
                 prompt=f"{feeling}한 기분을 표현하는 추상적인 앨범 커버 아트", # 프롬프트 구체화
                 size="1024x1024",
@@ -56,6 +56,7 @@ if st.button("어울리는 노래 찾기"):
             
             st.image(image_url, caption=feeling)
             st.write(result)
+
 
 
 
