@@ -22,7 +22,7 @@ feeling = st.select_slider(
         f"매우 {song}함"
     ],
 )
-st.write("나의 기분의 정도는", felling)
+st.write("지금 내 기분의 정도는", feeling)
         
         
 
@@ -52,6 +52,7 @@ if st.button("어울리는 노래 찾기"):
     
     result = chat_completion.choices[0].message.content
     st.write(result)
+
 
 
 
