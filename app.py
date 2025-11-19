@@ -19,7 +19,7 @@ if song:
         f"아주 조금 {song}",
         f"조금 {song}",
         f"적당히 {song}",
-        f"조금 많이 {song}"
+        f"조금 많이 {song}",
         f"매우 {song}"
     ],
 )
@@ -56,5 +56,6 @@ if st.button("어울리는 노래 찾기"):
             
      st.image(image_url, caption=feeling)
      st.write(result)
+
 
 
