@@ -30,13 +30,38 @@ if st.button("어울리는 노래 찾기"):
     )
     response = client.images.generate(
         model="dall-e-3",
-        prompt=song,
+        prompt=food,
         size="1024x1024",
         quality="standard",
         n=1,
     )
     
+    # 재료 입력 받기
+number = st.text_input("듣고 싶은 노래의 번호를 적어주세요.")
 
-    result = chat_completion.choices[0].message.content  
+# 재료 출력
+if st.button("확인"):
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": number,
+            },
+            {
+                "role": "system",
+                "content": "위에서 입력받은 번호에 해당하는 노래를 찾아서 뮤직비디오를 보여줘"
+            }
+        ],
+        model ="gpt-4o",
+    )
+    response = client.images.generate(
+        model="dall-e-3",
+        prompt=number,
+        size="1024x1024",
+        quality="standard",
+        n=1,
+    )
+     
+    
+    result = chat_completion.choices[0].message.content
     st.write(result)
-
