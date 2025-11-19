@@ -51,22 +51,23 @@ if st.session_state["confirmed"]:
                     "content": user_prompt,
                 }
             ],
-         )
+        )
 
-         response = client.images.generate(
+        response = client.images.generate(
                 model="dall-e-3",
                 prompt=f"{feeling}한 기분을 표현하는 추상적인 앨범 커버 아트", # 프롬프트 구체화
                 size="1024x1024",
                 quality="standard",
                 n=1,
-         )
+        )
             
-         # 결과 출력
-         image_url = response.data[0].url
-         result = chat_completion.choices[0].message.content
+        # 결과 출력
+        image_url = response.data[0].url
+        result = chat_completion.choices[0].message.content
             
-         st.image(image_url, caption=feeling)
-         st.write(result)
+        st.image(image_url, caption=feeling)
+        st.write(result)
+
 
 
 
