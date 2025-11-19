@@ -28,7 +28,7 @@ st.write("지금 내 기분의 정도는", feeling)
         
 if st.button("어울리는 노래 찾기"):
      user_prompt = f"나의 기분은 '{song}'이고, 그 정도는 '{feeling}'이야. 이 감정 상태에 딱 어울리는 노래 5곡을 추천해주고, 유튜브 링크도 함께 줘."
-    chat_completion = client.chat.completions.create(
+     chat_completion = client.chat.completions.create(
         model ="gpt-4o",
         messages=[
             {
@@ -56,3 +56,4 @@ if st.button("어울리는 노래 찾기"):
             
             st.image(image_url, caption=feeling)
             st.write(result)
+
