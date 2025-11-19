@@ -35,4 +35,8 @@ if st.button("어울리는 노래 찾기"):
         quality="standard",
         n=1,
     )
+    
+
+    result = chat_completion.choices[0].message.content  
+    st.write(result)
 
