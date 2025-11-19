@@ -55,7 +55,7 @@ if st.session_state["confirmed"]:
 
         response = client.images.generate(
                 model="dall-e-3",
-                prompt=f"{feeling}한 기분을 표현하는 추상적인 앨범 커버 아트", # 프롬프트 구체화
+                prompt=f"{feeling}한 기분을 표현하는 애니메이션 캐릭터 같은 앨범 커버 아트", # 프롬프트 구체화
                 size="1024x1024",
                 quality="standard",
                 n=1,
@@ -67,6 +67,7 @@ if st.session_state["confirmed"]:
             
         st.image(image_url, caption=feeling)
         st.write(result)
+
 
 
 
