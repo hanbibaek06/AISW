@@ -38,7 +38,7 @@ if st.button("어울리는 노래 찾기"):
             {
                 "role": "user",
                 "content": user_prompt,
-            },
+            }
         ],
     )
 
@@ -56,4 +56,5 @@ if st.button("어울리는 노래 찾기"):
             
             st.image(image_url, caption=feeling)
             st.write(result)
+
 
