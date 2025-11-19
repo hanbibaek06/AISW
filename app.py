@@ -8,22 +8,22 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
 
 
 # 앱 제목
-st.title("맛집 홍보 포스터 제작")
+st.title("기분에 맞는 노래를 들어봐요🎧🎶")
 
 # 재료 입력 받기
-food = st.text_input("어떤 음식을 홍보하고 싶으신가요?")
+song = st.text_input("오늘 당신의 기분은 어떠한가요?")
 
 # 재료 출력
-if st.button("홍보문구 및 포스터 제작"):
+if st.button("어울리는 노래 찾기"):
     chat_completion = client.chat.completions.create(
         messages=[
             {
                 "role": "user",
-                "content": food,
+                "content": song,
             },
             {
                 "role": "system",
-                "content": "위에서 입력받은 음식의 홍보 문구를 간략하게 작성해줘"
+                "content": "위에서 입력받은 기분에 어울리는 노래를 찾아줘"
             }
         ],
         model ="gpt-4o",
@@ -35,10 +35,3 @@ if st.button("홍보문구 및 포스터 제작"):
         quality="standard",
         n=1,
     )
-    
-    
-    result = chat_completion.choices[0].message.content
-    image_url = response.data[0].url
-    
-    st.write(result)
-    st.image(image_url)
