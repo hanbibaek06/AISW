@@ -67,15 +67,3 @@ if st.session_state["confirmed"]:
             
         st.image(image_url, caption=feeling)
         st.write(result)
-
-
-
-
-
-
-
-
-
-
-
-
