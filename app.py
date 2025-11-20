@@ -13,7 +13,7 @@ if not st.session_state["started"]:
     st.subheader("당신의 기분에 딱 맞는 노래를 찾아드려요.")
     st.write("아래 버튼을 눌러서 시작해보세요!")
     
-    if st.button("찾아보기"):
+    if st.button("시작"):
         st.session_state["started"] = True
         st.rerun()
 
@@ -85,3 +85,4 @@ else:
         st.session_state["started"] = False
         st.session_state["confirmed"] = False
         st.rerun()
+
