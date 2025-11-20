@@ -8,7 +8,7 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
 
 
 # 앱 제목
-st.title("오늘의 노래를 들어봐요🎧🎶")
+st.title("오늘의 노래🎧🎶")
 
 if "confirmed" not in st.session_state:
     st.session_state["confirmed"] = False
@@ -67,6 +67,7 @@ if st.session_state["confirmed"]:
             
         st.image(image_url, caption=feeling)
         st.write(result)
+
 
 
 
