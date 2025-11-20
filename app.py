@@ -37,34 +37,33 @@ if st.session_state["confirmed"]:
         st.write("지금 내 기분의 정도는", feeling)
 
         
-    if st.button("어울리는 노래 찾기"):
-        user_prompt = f"나의 기분은 '{song}'이고, 그 정도는 '{feeling}'이야. 이 감정 상태에 딱 어울리는 노래 5곡을 추천해주고, 뮤직비디오나 노래 영상을 나태내줘."
-        chat_completion = client.chat.completions.create(
-            model ="gpt-4o",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "당신은 음악 추천 전문가입니다. 사용자의 기분과 그 강도에 맞춰 상세하게 노래를 추천해주세요."
-                },
-                {
-                    "role": "user",
-                    "content": user_prompt,
-                }
-            ],
-        )
+        if st.button("어울리는 노래 찾기"):
+            user_prompt = f"나의 기분은 '{song}'이고, 그 정도는 '{feeling}'이야. 이 감정 상태에 딱 어울리는 노래 5곡을 추천해주고, 뮤직비디오나 노래 영상을 나태내줘."
+            chat_completion = client.chat.completions.create(
+                model ="gpt-4o",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "당신은 음악 추천 전문가입니다. 사용자의 기분과 그 강도에 맞춰 상세하게 노래를 추천해주세요."
+                    },
+                    {
+                        "role": "user",
+                        "content": user_prompt,
+                    }
+                ],
+            )
 
-        response = client.images.generate(
-                model="dall-e-3",
-                prompt=f"{feeling}한 기분을 표현하는 애니메이션 캐릭터 같은 앨범 커버 아트", # 프롬프트 구체화
-                size="1024x1024",
-                quality="standard",
-                n=1,
-        )
+            response = client.images.generate(
+                    model="dall-e-3",
+                    prompt=f"{feeling}한 기분을 표현하는 애니메이션 캐릭터 같은 앨범 커버 아트", # 프롬프트 구체화
+                    size="1024x1024",
+                    quality="standard",
+                    n=1,
+            )
             
         # 결과 출력
-        image_url = response.data[0].url
-        result = chat_completion.choices[0].message.content
+            image_url = response.data[0].url
+            result = chat_completion.choices[0].message.content
             
-        st.image(image_url, caption=feeling)
-        st.write(result)
-
+            st.image(image_url, caption=feeling)
+            st.write(result)
