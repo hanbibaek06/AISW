@@ -49,7 +49,7 @@ else:
 
             
             if st.button("어울리는 노래 찾기"):
-                user_prompt = f"나의 기분은 '{song}'이고, 그 정도는 '{feeling}'이야. 이 감정 상태에 딱 어울리는 노래 5곡을 추천해주고, 뮤직비디오나 노래 영상을 알려줘."
+                user_prompt = f"나의 기분은 '{song}'이고, 그 정도는 '{feeling}'이야. 이 감정 상태에 딱 어울리는 노래 5곡을 추천해주고, 뮤직비디오나 노래 영상을 바로 들을 수 있도록 링크를 알려줘."
                 
                 with st.spinner("AI가 노래를 선곡하고 그림을 그리고 있어요..."):
                     chat_completion = client.chat.completions.create(
@@ -85,5 +85,6 @@ else:
         st.session_state["started"] = False
         st.session_state["confirmed"] = False
         st.rerun()
+
 
 
