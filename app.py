@@ -34,7 +34,7 @@ if st.session_state["confirmed"]:
             f"매우 {song}"
         ],
     )
-    st.write("지금 내 기분의 정도는", feeling)
+        st.write("지금 내 기분의 정도는", feeling)
 
         
     if st.button("어울리는 노래 찾기"):
@@ -67,3 +67,4 @@ if st.session_state["confirmed"]:
             
         st.image(image_url, caption=feeling)
         st.write(result)
+
